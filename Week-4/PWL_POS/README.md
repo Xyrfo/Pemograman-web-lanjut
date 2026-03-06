@@ -101,10 +101,6 @@ dan ubah user.blade di view
     </table>
 
 
-</details>
-
----
-
 ## 2.4
 
 <img width="1209" height="325" alt="image" src="https://github.com/user-attachments/assets/2d767ff2-a2fc-48c6-a555-167dbbf54205" />
@@ -135,6 +131,9 @@ Data baru akan disimpan setelah memanggil method save().
 <img width="352" height="125" alt="image" src="https://github.com/user-attachments/assets/c39b5566-bddf-4c0c-8258-0d5a1a1602b9" />
 <img width="368" height="39" alt="image" src="https://github.com/user-attachments/assets/6a9ae96e-df0f-48ba-a03e-776f6f438b23" />
 
+</details>
+
+---
 
 ## Project POS
 
