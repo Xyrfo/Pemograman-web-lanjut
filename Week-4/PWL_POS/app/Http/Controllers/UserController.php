@@ -17,15 +17,26 @@ class UserController extends Controller
 
     public function index()
     {
-        $data = [
-            'level_id' => 2,
-            'username' => 'manager_tiga',
-            'name' => 'Manager 3',
-            'password' => Hash::make('12345')   
-        ];
-        UserModel::create($data);
+        $user = UserModel::create(
+            [
+                'username' => 'manager13',
+                'name' => 'Manager13',
+                'password' => Hash::make('12345'),
+                'level_id' => 2,
+            ]
+        );
 
-        $user = UserModel::all();
+        $user->username = 'manager14';
+
+        $user->save();
+
+        $user->wasChanged(); // true
+        $user->wasChanged('username'); // true
+        $user->wasChanged('username', 'level_id'); // true
+        $user->wasChanged('name'); // false
+        dd($user->wasChanged('name', 'username')); // true
+
+
         return view('user', ['data' => $user]);
     }
 }
