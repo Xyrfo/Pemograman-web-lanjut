@@ -30,39 +30,6 @@ Route digunakan sebagai penghubung antara user dengan aplikasi (penentu URL).
 
 ---
 
-## Praktikum 1
-<details>
-<summary>Detail</summary>
-
-
-
-</details>
-
----
-
-## Praktikum 2
-<details>
-<summary>Detail</summary>
-
-
-
-</details>
-
----
-
-## Praktikum 3
-<details>
-<summary>Detail</summary>
-
-
-
-</details>
-
----
-
-## Project POS
-
-
 🔗 **Repository GitHub**  
 https://github.com/Xyrfo/Pemograman-web-lanjut
 =======
