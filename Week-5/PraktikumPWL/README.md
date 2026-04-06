@@ -1,58 +1,238 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laporan Praktikum Pemrograman Web Lanjut
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Identitas Mahasiswa
 
-## About Laravel
+| Keterangan | Data |
+|------------|------|
+| **Nama**   | Rifo Anggi Barbara Danuarta |
+| **NIM**    | 244107020063 |
+| **Kelas**  | TI-2F |
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Persiapan
+**Laravel menggunakan MVC (Model, View, Controller)**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+* **Model**  
+  Berisi semua metode dan atribut yang diperlukan untuk berinteraksi dengan database.
 
-## Learning Laravel
+* **View**  
+  Digunakan untuk menampilkan data ke pengguna (Frontend).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+* **Controller**  
+  Menjadi penghubung antara Model dan View (Backend).
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Route
+Route digunakan sebagai penghubung antara user dengan aplikasi (penentu URL).
 
-## Agentic Development
+---
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+## Praktikum 1
+<details>
+<summary>Detail</summary>
+<img width="1365" height="726" alt="Screenshot 2026-03-22 145436" src="https://github.com/user-attachments/assets/32630a00-725a-442e-8888-f8e82c4b43b5" />
 
-```bash
-composer require laravel/boost --dev
+Halaman login yang dihasilkan Laravel filament
 
-php artisan boost:install
-```
+## Analisa
+*1. Apa kelebihan Filament dibanding membuat admin panel manual?*
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+cepat dikembangkan, UI sudah siap pakai, terintegrasi dengan eloquent, fitur lengkap, lebih sedikit kode.
 
-## Contributing
+Filament mempercepat pembuatan admin panel, mengurangi kompleksitas coding, dan meningkatkan efisiensi development.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+*2. Mengapa Filament menggunakan Livewire?*
 
-## Code of Conduct
+tanpa js manual, realtime update, integritas laravel, lebih sederhana dibanding SPA
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Livewire memungkinkan Filament membuat UI interaktif berbasis server-side tanpa kompleksitas frontend framework.
 
-## Security Vulnerabilities
+*3. Apa perbedaan SQLite dan MySQL dalam development?* 
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+🔹 SQLite
+Database berbentuk file (.sqlite)
+Tidak perlu server
+Cocok untuk development / testing
+🔹 MySQL
+Database berbasis server
+Butuh instalasi (XAMPP, dll)
+Cocok untuk production
 
-## License
+SQLite → untuk development cepat
+MySQL → untuk aplikasi skala besar & production
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+*4. Apa fungsi Panel Builder?*
+
+Membuat dashboard admin
+Mengatur:
+Navigation menu
+Resource (CRUD)
+Halaman (pages)
+Mengelola akses panel
+Custom tampilan admin
+
+Panel Builder berfungsi sebagai alat untuk membangun dan mengelola seluruh struktur admin panel dalam Filament.
+
+</details>
+
+---
+
+## Praktikum 2
+<details>
+<summary>Detail</summary>
+
+<img width="1056" height="79" alt="Screenshot 2026-03-22 190102" src="https://github.com/user-attachments/assets/97dfa409-f30d-4958-93cf-a4571ff2aa43" />
+<img width="1365" height="432" alt="Screenshot 2026-03-22 185948" src="https://github.com/user-attachments/assets/e39f1550-5d2f-409e-9925-e1785d47d542" />
+<img width="1365" height="415" alt="Screenshot 2026-03-22 185928" src="https://github.com/user-attachments/assets/c5bd253b-ba89-46f8-b1a3-884efcd16b31" />
+<img width="1365" height="367" alt="Screenshot 2026-03-22 185530" src="https://github.com/user-attachments/assets/64ac2370-aad7-4fb8-be8f-2f2465278aee" />
+<img width="208" height="222" alt="Screenshot 2026-03-22 185249" src="https://github.com/user-attachments/assets/9a257a85-5bf7-4c07-94c9-e2f38a15eb06" />
+<img width="1033" height="43" alt="Screenshot 2026-03-22 145657" src="https://github.com/user-attachments/assets/85742f43-6141-4423-a677-58df7bd91ac3" />
+<img width="1365" height="723" alt="Screenshot 2026-03-22 145615" src="https://github.com/user-attachments/assets/0256fa04-1b2c-495a-94cd-f2a01496773f" />
+
+## Analisis
+*1. Mengapa Filament dapat membuat CRUD tanpa banyak coding?* 
+
+a. Resource-based system
+
+Kita hanya perlu membuat Resource, dan Filament otomatis generate:
+Form (create & edit)
+Table (list data)
+Action (edit, delete)
+
+b. Terintegrasi dengan Eloquent
+Filament langsung membaca model Laravel, misalnya:
+field database
+relasi
+
+Jadi tidak perlu:
+query manual
+controller panjang
+
+c. Sudah menyediakan komponen siap pakai
+Contoh:
+TextInput
+Select
+DatePicker
+Table Column
+
+*2. Apa perbedaan Form Schema dan Table Schema?*
+
+Form Schema
+Digunakan untuk input data (Create & Edit)
+Contoh:
+TextInput (nama)
+TextInput (email)
+Password field
+
+fokus: input user
+
+Table Schema
+Digunakan untuk menampilkan data
+Contoh:
+kolom nama
+kolom email
+tombol edit & delete
+
+*3. Bagaimana jika kita ingin menambahkan validasi email unik?* 
+TextInput::make('email')
+    ->email()
+    ->required()
+    ->unique(ignoreRecord: true)
+    
+Penjelasan:
+email() → valid format email
+required() → wajib diisi
+unique() → tidak boleh sama di database
+ignoreRecord: true → supaya saat edit tidak dianggap duplikat
+
+
+*4. Mengapa password tidak perlu kita hash manual?* 
+
+use Illuminate\Support\Facades\Hash;
+
+protected function password(): Attribute
+{
+    return Attribute::make(
+        set: fn ($value) => Hash::make($value),
+    );
+}
+Penjelasan:
+Setiap password yang disimpan akan otomatis di-hash
+Kita tidak perlu memanggil Hash::make() di controller
+
+Kenapa harus di-hash?
+agar password tidak tersimpan dalam bentuk asli
+meningkatkan keamanan data user
+
+
+</details>
+
+---
+
+## Praktikum 3
+<details>
+<summary>Detail</summary>
+
+## Analisis 
+*1. Mengapa kita perlu $fillable?* 
+
+$fillable digunakan untuk menentukan field mana saja yang boleh diisi secara massal (mass assignment).
+
+Fungsi utama:
+Melindungi data dari serangan
+Mencegah field sensitif ikut terisi otomatis
+
+Tanpa $fillable
+Semua input bisa masuk ke database, termasuk:
+role
+is_admin
+ini berbahaya (security risk)
+
+*2. Apa fungsi $casts pada Laravel?* 
+
+$casts digunakan untuk mengubah tipe data dari database menjadi tipe tertentu secara otomatis.
+Fungsi:
+Mengubah data otomatis saat diambil dari database
+Mempermudah penggunaan data
+
+Contoh penggunaan:
+datetime → langsung jadi objek tanggal
+boolean → true / false
+
+*3. Apa perbedaan integer biasa dengan foreign key?* 
+
+Integer biasa
+Hanya angka biasa
+Tidak memiliki hubungan dengan tabel lain
+
+Foreign Key
+Field integer yang berelasi dengan tabel lain
+Menghubungkan data antar tabel
+
+*4. Bagaimana jika category dihapus tetapi masih ada post?* 
+
+1. Restrict (default)
+
+Tidak bisa hapus category
+karena masih dipakai post
+
+2. Cascade
+onDelete('cascade')
+Jika category dihapus:
+
+semua post ikut terhapus
+3. Set Null
+onDelete('set null')
+
+Jika category dihapus:
+category_id pada post jadi NULL
+
+</details>
+
+---
+
+
+🔗 **Repository GitHub**  
+https://github.com/Xyrfo/Pemograman-web-lanjut
