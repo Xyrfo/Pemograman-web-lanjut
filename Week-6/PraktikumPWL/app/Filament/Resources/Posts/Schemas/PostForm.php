@@ -29,10 +29,18 @@ class PostForm
                     ->schema([
                         // grouping
                         Group::make([
-                            TextInput::make('title'),
-                            TextInput::make('slug'),
+                            TextInput::make('title')
+                                ->rules(["required", "min:3", "max:10"])
+                                ->maxLength(255),
+                            TextInput::make('slug')
+                                ->rules('required')
+                                ->unique()
+                                ->validationMessages([
+                                    'unique' => 'Slug harus unik dan tidak boleh sama.',
+                                ]),
                             Select::make('category_id')
                                 ->relationship("category", "name")
+                                ->required()
                                 ->preload()
                                 ->searchable(),
                             ColorPicker::make('color'),
@@ -46,6 +54,7 @@ class PostForm
                     Section::make('Image Upload')
                         ->schema([
                             FileUpload::make("image")
+                                ->required()
                                 ->disk("public")
                                 ->directory("posts"),
                         ]),
