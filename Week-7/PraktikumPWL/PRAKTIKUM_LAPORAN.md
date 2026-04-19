@@ -2,9 +2,9 @@
 ## Implementasi Wizard Form (Multi Step Form) di Filament
 
 **Mata Kuliah:** Pemrograman Web Lanjut  
-**Pertemuan:** Week 7  
-**Tanggal:** April 2026  
-**Nama:** [Silakan isi nama Anda]  
+**Pertemuan:** Week 7   
+**Nama:** Rifo Anggi Barbara Danuarta
+**Kelas:** 2F  
 
 ---
 
@@ -210,14 +210,8 @@ Akses di: **http://localhost:8000/admin/products**
 |---|---|---|---|---|---|---|
 | 1 | [Produk 1] | [SKU 1] | [Harga 1] | [Stok 1] | ✅/❌ | Aktif |
 | 2 | [Produk 2] | [SKU 2] | [Harga 2] | [Stok 2] | ✅/❌ | Aktif |
-| 3 | [Produk 3] | [SKU 3] | [Harga 3] | [Stok 3] | ✅/❌ | Aktif/Nonaktif |
+| 3 | [Produk 3] | [SKU 3] | [Harga 3] | [Stok 3] | ✅/❌ | Aktif |
 
-**Verifikasi:**
-- ✅ Semua 3 produk tampil di tabel
-- ✅ Semua kolom terlihat: Nama, SKU, Harga, Stok, Gambar, Status
-- ✅ Format harga menampilkan dalam IDR
-- ✅ Badge status menampilkan dengan warna (hijau = Aktif, merah = Nonaktif)
-- ✅ Gambar tampil untuk produk yang upload
 
 ---
 
@@ -334,22 +328,6 @@ storage/
 
 ---
 
-## 🎓 M. Kesimpulan
-
-Pada praktikum Week 7 ini, kami telah berhasil:
-
-✅ **Membuat Model & Migration Product** dengan struktur tabel lengkap  
-✅ **Generate Filament Resource** dengan otomatis  
-✅ **Implementasi Wizard Form** dengan 3 steps  
-✅ **Setup validasi** per step sesuai requirements  
-✅ **Konfigurasi tabel** dengan kolom lengkap dan formatting  
-✅ **Custom button** dan hilangkan default button  
-✅ **Testing** dan verifikasi semua fitur berfungsi  
-✅ **Dokumentasi** lengkap dalam laporan ini  
-
-Dengan Wizard Form, kami memberikan pengalaman pengguna yang lebih baik untuk input data produk yang kompleks dalam aplikasi e-commerce.
-
----
 
 ## 📝 N. Referensi & Resources
 
@@ -360,10 +338,10 @@ Dengan Wizard Form, kami memberikan pengalaman pengguna yang lebih baik untuk in
 
 ---
 
-**Laporan dibuat oleh:** [Nama Anda]  
-**Dosen Pengampu:** [Nama Dosen]  
+**Laporan dibuat oleh:** Rifo Anggi Barbara Danuarta  
+**Kelas:** 2F   
+**Dosen Pengampu:** Habibie Ed Dien
 **Program Studi:** Teknik Informatika  
-**Universitas:** [Nama Universitas]  
 
 ---
 
