@@ -832,7 +832,8 @@ class ProductInfolist
 
 ### Step E: Tampilan Tabs Horizontal
 
-![Tabs Horizontal](screenshots/tabs-horizontal.png)
+<img width="502" height="475" alt="Screenshot 2026-04-19 132503" src="https://github.com/user-attachments/assets/9f01a895-1ea6-4594-bfef-578af6504642" />
+
 
 
 **Cara mendapatkan tampilan horizontal:** Jangan tambahkan method `->vertical()`, secara default Tabs akan tampil horizontal.
@@ -851,7 +852,8 @@ Tabs::make('Product Tabs')
     ])
 ```
 
-![Tabs Vertical](screenshots/tabs-vertical.png)
+<img width="542" height="410" alt="Screenshot 2026-04-19 132640" src="https://github.com/user-attachments/assets/669ab4a4-f068-47c6-8195-07c58922e35c" />
+
 
 
 ---
@@ -930,7 +932,8 @@ Sudah diimplementasikan dengan `->vertical()` pada Tabs.
 - [x] Tabs vertical
 - [x] Tab dengan badge
 
-![Tab dengan Badge Dinamis](screenshots/tabs-badge-dinamis.png)
+<img width="570" height="270" alt="Screenshot 2026-04-19 132746" src="https://github.com/user-attachments/assets/45d04b16-5499-42f4-a363-ded941b5bd64" />
+
 
 ---
 
