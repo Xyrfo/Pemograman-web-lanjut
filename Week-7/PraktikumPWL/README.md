@@ -323,10 +323,736 @@ php artisan view:clear
 
 ---
 
-  
+# 🎓 Pertemuan 8 - Implementasi Info List (View Page) di Filament
+
+## 📚 Tujuan Pembelajaran
+
+Setelah mengikuti praktikum ini, mahasiswa mampu:
+
+✅ Memahami konsep Info List pada Filament  
+✅ Mengubah tampilan View Page dari form menjadi display informasi  
+✅ Menggunakan TextEntry, ImageEntry, dan IconEntry  
+✅ Menggunakan Badge, Color, Icon, dan Format Date  
+✅ Mendesain halaman detail (show page) yang lebih profesional  
+
+---
+
+## 🎯 Latar Belakang
+
+Pada pertemuan sebelumnya, kita telah membuat Wizard Form pada module Product. Namun ketika tombol View diklik, halaman detail masih menampilkan form input (kurang tepat untuk tampilan informasi).
+
+**Solusinya:** Menggunakan Info List agar data ditampilkan dalam bentuk informasi (read-only display).
+
+---
+
+## 🔧 Implementasi
+
+### File yang Dimodifikasi
+
+📄 **ProductInfolist.php**
+```
+app/Filament/Resources/Products/Schemas/ProductInfolist.php
+```
+
+### Komponen Info List yang Digunakan
+
+| Komponen | Fungsi | Analogi |
+|----------|--------|---------|
+| **TextEntry** | Menampilkan teks | TextColumn (di Tabel) |
+| **ImageEntry** | Menampilkan gambar | ImageColumn (di Tabel) |
+| **IconEntry** | Menampilkan icon boolean | IconColumn (di Tabel) |
+| **badge()** | Menampilkan dalam bentuk badge | Badge styling |
+| **color()** | Memberi warna | Color styling |
+| **weight()** | Bold text | Font weight |
+| **icon()** | Menambahkan icon | Icon indicator |
+| **date()** | Format tanggal | Date formatting |
+
+---
+
+## 📋 Struktur Info List
+
+### Section 1: Product Info 🏷️
+
+```php
+Section::make('Product Info')
+    ->description('Informasi dasar produk')
+    ->schema([
+        TextEntry::make('name')
+            ->label('Product Name')
+            ->weight('bold')
+            ->color('primary'),
+        TextEntry::make('id')
+            ->label('Product ID'),
+        TextEntry::make('sku')
+            ->label('Product SKU')
+            ->badge()
+            ->color('success'),
+        TextEntry::make('description')
+            ->label('Product Description'),
+        TextEntry::make('created_at')
+            ->label('Product Creation Date')
+            ->date('d M Y')
+            ->color('info'),
+    ])
+    ->columnSpanFull(),
+```
+
+**Fitur:**
+- Nama produk dengan text bold dan warna primary
+- SKU ditampilkan sebagai badge dengan warna success
+- Tanggal dibuat dengan format "01 Mar 2026"
+
+---
+
+### Section 2: Pricing & Stock 💰
+
+```php
+Section::make('Pricing & Stock')
+    ->description('Harga dan Stok Produk')
+    ->schema([
+        TextEntry::make('price')
+            ->label('Product Price')
+            ->weight('bold')
+            ->color('primary')
+            ->icon('heroicon-o-currency-dollar')
+            ->formatStateUsing(fn ($state) => 'Rp ' . number_format($state, 0, ',', '.')),
+        TextEntry::make('stock')
+            ->label('Product Stock')
+            ->weight('bold')
+            ->color('primary')
+            ->icon('heroicon-o-cube')
+            ->formatStateUsing(fn ($state) => $state . ' unit'),
+    ])
+    ->columnSpanFull(),
+```
+
+**Fitur:**
+- Harga diformat menjadi "Rp X.XXX.XXX" (Rupiah)
+- Stock ditampilkan dengan "X unit"
+- Icon currency-dollar untuk harga
+- Icon cube untuk stock
+
+---
+
+### Section 3: Image and Status 📷
+
+```php
+Section::make('Image and Status')
+    ->description('Gambar dan Status Produk')
+    ->schema([
+        ImageEntry::make('image')
+            ->label('Product Image')
+            ->disk('public'),
+        IconEntry::make('is_active')
+            ->label('Is Active')
+            ->boolean(),
+        IconEntry::make('is_featured')
+            ->label('Is Featured')
+            ->boolean(),
+    ])
+    ->columnSpanFull(),
+```
+
+**Fitur:**
+- Menampilkan gambar dari storage public
+- Is Active: ✓ (hijau) jika true, ✗ (merah) jika false
+- Is Featured: ✓ (hijau) jika true, ✗ (merah) jika false
+
+---
+
+## 🧪 Testing Guide - Pertemuan 8
+
+### Test Case 1: View Product Detail
+
+```
+1. Go to: http://localhost:8000/admin/products
+2. Klik icon 👁️ pada salah satu produk
+3. Verifikasi setiap section muncul:
+   ✅ Section Product Info
+   ✅ Section Pricing & Stock
+   ✅ Section Image and Status
+4. Cek formatting:
+   ✅ Harga format Rp
+   ✅ Stock format unit
+   ✅ Tanggal format "d M Y"
+   ✅ Boolean icon ✓ dan ✗
+5. Pastikan Edit button tersedia
+```
+
+### Test Case 2: Validasi Icon Boolean
+
+```
+Product dengan is_active = true:
+   ✅ Muncul icon check (✓) warna hijau
+
+Product dengan is_active = false:
+   ❌ Muncul icon cross (✗) warna merah
+```
+
+### Test Case 3: Validasi Image Display
+
+```
+1. Product dengan gambar:
+   ✅ Gambar ditampilkan di Image and Status section
+   
+2. Product tanpa gambar:
+   ✅ Placeholder atau kosong
+```
+
+---
+
+## 🎨 Hasil yang Diharapkan
+
+### Sebelum (View Page dengan Form)
+- Tampilan form input
+- Field editable
+- Kurang informatif
+
+### Sesudah (View Page dengan Info List)
+- Tampilan display profesional
+- Read-only (tidak bisa diubah)
+- Lebih rapi & terstruktur
+- Badge & icon untuk visual yang lebih baik
+
+---
+
+## 📸 Screenshot Evidence
+
+### Screenshot 1: Section Product Info
+*Menampilkan Name (bold), ID, SKU (badge), Description, Creation Date*
+
+[Tambahkan screenshot di sini]
+
+### Screenshot 2: Section Pricing & Stock
+*Menampilkan Price (format Rp) dan Stock (format unit) dengan icon*
+
+[Tambahkan screenshot di sini]
+
+### Screenshot 3: Section Image and Status
+*Menampilkan Image, Is Active (boolean icon), Is Featured (boolean icon)*
+
+[Tambahkan screenshot di sini]
+
+---
+
+## 💾 Database Check
+
+Pastikan produk test memiliki data lengkap:
+
+```sql
+SELECT id, name, sku, price, stock, image, is_active, is_featured, created_at 
+FROM products 
+LIMIT 2;
+```
+
+Seharusnya ada minimal 2 produk dengan:
+- Nama dan SKU terisi
+- Harga > 0
+- Stock > 0
+- Gambar (opsional)
+- is_active & is_featured (boolean)
+
+---
+
+## 🔍 Key Points
+
+### TextEntry vs TextColumn
+
+| TextEntry | TextColumn |
+|-----------|-----------|
+| Digunakan di Info List | Digunakan di Tabel |
+| Untuk display detail | Untuk display list |
+| Read-only | Read-only |
+| Bisa complex formatting | Formatting sederhana |
+
+### Icon Entry Boolean
+
+- `->boolean()` otomatis menampilkan check/cross icon
+- Warna otomatis: hijau (true), merah (false)
+- Sangat user-friendly untuk status
+
+### formatStateUsing()
+
+Digunakan untuk formatting kompleks:
+```php
+->formatStateUsing(fn ($state) => 'Rp ' . number_format($state, 0, ',', '.'))
+```
+
+---
+
+## ✅ Checklist Completion
+
+- [ ] Edit ProductInfolist.php
+- [ ] Tambah Section Product Info
+- [ ] Tambah Section Pricing & Stock
+- [ ] Tambah Section Image and Status
+- [ ] Format harga menjadi Rp
+- [ ] Format stock dengan unit
+- [ ] Add boolean icons untuk status
+- [ ] Test view product detail
+- [ ] Screenshot setiap section
+- [ ] Update README dengan findings
+
+---
+
+## 🔗 File References
+
+| Jenis | Path |
+|--------|------|
+| Info List Schema | `app/Filament/Resources/Products/Schemas/ProductInfolist.php` |
+| Product Model | `app/Models/Product.php` |
+| Product Resource | `app/Filament/Resources/Products/ProductResource.php` |
+| View Page | `app/Filament/Resources/Products/Pages/ViewProduct.php` |
+
+---
+
+## 🎓 Konsep yang Dipelajari
+
+✅ **Info List Basics** - Understand InfoList concept  
+✅ **TextEntry Component** - Display text data  
+✅ **ImageEntry Component** - Display images  
+✅ **IconEntry Component** - Display boolean as icons  
+✅ **Data Formatting** - Format price, date, number  
+✅ **Styling** - Badge, color, weight, icon  
+✅ **Professional UI** - Create polished detail page  
+
+---
+
+## 🛠️ Commands untuk Pertemuan 8
+
+```bash
+# Jalankan development server
+php artisan serve
+
+# Clear cache jika ada perubahan
+php artisan cache:clear
+php artisan view:clear
+
+# Test database connection
+php artisan tinker
+>>> Product::first();
+```
+
+---
+
+# 🎓 Pertemuan 9 - Tabs in Details Deep Dive
+
+## 📚 Tujuan Pembelajaran
+
+Setelah mengikuti praktikum ini, mahasiswa mampu:
+
+1. Menggunakan komponen Tabs pada Info List
+2. Mengelompokkan informasi detail ke dalam beberapa tab
+3. Menambahkan icon dan badge pada tab
+4. Mengubah orientasi tab (horizontal & vertical)
+5. Mendesain halaman View agar lebih ringkas dan user-friendly
+
+**Framework yang digunakan:** Filament
+
+---
+
+## 🎯 Latar Belakang (Bagian A)
+
+Pada pertemuan sebelumnya, kita telah menggunakan **Info List** dengan **Section** untuk menampilkan detail Product. Namun jika data cukup banyak, pengguna harus scroll panjang ke bawah.
+
+**Solusi:** Gunakan **Tabs** agar informasi dibagi menjadi beberapa kategori dan dapat diakses dengan klik.
+
+Contoh pembagian:
+- Tab 1 → Product Info
+- Tab 2 → Pricing & Stock
+- Tab 3 → Media & Status
+
+---
+
+## 🧩 Konsep Tabs di Info List (Bagian B)
+
+Tabs digunakan untuk:
+- Membagi informasi ke dalam beberapa halaman kecil
+- Mengurangi scrolling panjang
+- Meningkatkan user experience
+
+---
+
+## 🔧 Langkah Praktikum
+
+### Step C: Mengubah Section Menjadi Tabs
+
+**File yang dimodifikasi:**
+```
+app/Filament/Resources/Products/Schemas/ProductInfolist.php
+```
+
+**Sebelum (Section-based):**
+
+```php
+<?php
+
+namespace App\Filament\Resources\Products\Schemas;
+
+use Filament\Schemas\Components\Section;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\IconEntry;
+use Filament\Schemas\Schema;
+
+class ProductInfolist
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Section::make('Product Info')
+                    ->description('Informasi dasar produk')
+                    ->schema([
+                        TextEntry::make('name')
+                            ->label('Product Name')
+                            ->weight('bold')
+                            ->color('primary'),
+                        TextEntry::make('sku')
+                            ->label('SKU')
+                            ->badge()
+                            ->color('success'),
+                        TextEntry::make('description')
+                            ->label('Description'),
+                    ])
+                    ->columnSpanFull(),
+
+                Section::make('Pricing & Stock')
+                    ->description('Harga dan Stok Produk')
+                    ->schema([
+                        TextEntry::make('price')
+                            ->label('Price')
+                            ->icon('heroicon-o-currency-dollar'),
+                        TextEntry::make('stock')
+                            ->label('Stock'),
+                    ])
+                    ->columnSpanFull(),
+
+                Section::make('Media & Status')
+                    ->description('Gambar dan Status Produk')
+                    ->schema([
+                        ImageEntry::make('image')
+                            ->label('Product Image')
+                            ->disk('public'),
+                        IconEntry::make('is_active')
+                            ->label('Active')
+                            ->boolean(),
+                        IconEntry::make('is_featured')
+                            ->label('Featured')
+                            ->boolean(),
+                    ])
+                    ->columnSpanFull(),
+            ]);
+    }
+}
+```
+
+
+---
+
+### Step D: Implementasi Tabs
+
+**Sesudah (Tabs-based):**
+
+```php
+<?php
+
+namespace App\Filament\Resources\Products\Schemas;
+
+use Filament\Schemas\Components\Tabs;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\IconEntry;
+use Filament\Schemas\Schema;
+
+class ProductInfolist
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Tabs::make('Product Tabs')
+                    ->tabs([
+                        Tabs\Tab::make('Product Info')
+                            ->icon('heroicon-o-academic-cap')
+                            ->schema([
+                                TextEntry::make('name')
+                                    ->label('Product Name')
+                                    ->weight('bold')
+                                    ->color('primary'),
+                                TextEntry::make('sku')
+                                    ->label('SKU')
+                                    ->badge()
+                                    ->color('success'),
+                                TextEntry::make('description')
+                                    ->label('Description'),
+                            ])
+                            ->columnSpanFull(),
+
+                        Tabs\Tab::make('Pricing & Stock')
+                            ->icon('heroicon-o-currency-dollar')
+                            ->badge('10')
+                            ->badgeColor('info')
+                            ->schema([
+                                TextEntry::make('price')
+                                    ->label('Price')
+                                    ->icon('heroicon-o-currency-dollar'),
+                                TextEntry::make('stock')
+                                    ->label('Stock'),
+                            ]),
+
+                        Tabs\Tab::make('Media & Status')
+                            ->icon('heroicon-o-photo')
+                            ->schema([
+                                ImageEntry::make('image')
+                                    ->label('Product Image')
+                                    ->disk('public'),
+                                IconEntry::make('is_active')
+                                    ->label('Active')
+                                    ->boolean(),
+                                IconEntry::make('is_featured')
+                                    ->label('Featured')
+                                    ->boolean(),
+                            ]),
+                    ]),
+            ]);
+    }
+}
+```
+
+**Penjelasan per Tab:**
+
+| Tab | Icon | Badge | Komponen |
+|-----|------|-------|----------|
+| Product Info | `heroicon-o-academic-cap` | - | TextEntry (name, sku, description) |
+| Pricing & Stock | `heroicon-o-currency-dollar` | `10` (info) | TextEntry (price, stock) |
+| Media & Status | `heroicon-o-photo` | - | ImageEntry, IconEntry (is_active, is_featured) |
+
+---
+
+### Step E: Tampilan Tabs Horizontal
+
+![Tabs Horizontal](screenshots/tabs-horizontal.png)
+
+
+**Cara mendapatkan tampilan horizontal:** Jangan tambahkan method `->vertical()`, secara default Tabs akan tampil horizontal.
+
+---
+
+### Step F: Mengubah Tabs Menjadi Vertical
+
+Tambahkan method `->vertical()` pada komponen Tabs:
+
+```php
+Tabs::make('Product Tabs')
+    ->vertical()
+    ->tabs([
+        // ...
+    ])
+```
+
+![Tabs Vertical](screenshots/tabs-vertical.png)
+
+
+---
+
+### Step G: Fitur Tambahan Tabs
+
+| Method | Fungsi |
+|--------|--------|
+| `icon()` | Menambahkan icon pada tab |
+| `badge()` | Menambahkan badge angka |
+| `badgeColor()` | Mengubah warna badge |
+| `columnSpanFull()` | Membuat full width |
+| `vertical()` | Mengubah orientasi tab |
+
+---
+
+### Step H: Perbandingan Section vs Tabs
+
+| Aspek | Section | Tabs |
+|-------|---------|------|
+| Navigasi | Scroll panjang | Klik tab |
+| Tampilan | Semua tampil sekaligus | Terpisah per kategori |
+| Ringkasan | Kurang ringkas | Lebih profesional |
+| UX | Pengguna harus scroll | Pengguna klik untuk pindah |
+| Cocok untuk | Data sedikit | Data banyak & berkategori |
+
+---
+
+### Step J: Latihan Praktikum
+
+#### 1. Badge Dinamis Berdasarkan Jumlah Stok
+
+Mengganti badge statis `'10'` menjadi dinamis berdasarkan data stok produk:
+
+```php
+->badge(fn ($record) => $record?->stock ?? 0)
+```
+
+> Badge sekarang menampilkan jumlah stok aktual dari database, bukan angka statis.
+
+#### 2. Warna Badge Berbeda
+
+Menambahkan warna badge yang berubah secara dinamis berdasarkan jumlah stok:
+
+```php
+->badgeColor(fn ($record) =>
+    match(true) {
+        ($record?->stock ?? 0) >= 10 => 'success',  // Hijau - stok aman
+        ($record?->stock ?? 0) >= 5 => 'warning',    // Kuning - stok menipis
+        default => 'danger',                          // Merah - stok kritis
+    }
+)
+```
+
+| Kondisi Stok | Warna Badge | Status |
+|-------------|-------------|--------|
+| ≥ 10 | success (hijau) | Stok aman |
+| ≥ 5 | warning (kuning) | Stok menipis |
+| < 5 | danger (merah) | Stok kritis |
+
+#### 3. Ubah Tampilan Menjadi Vertical
+
+Sudah diimplementasikan dengan `->vertical()` pada Tabs.
+
+#### 4. Tambahkan Icon Berbeda pada Tiap Tab
+
+| Tab | Icon | Deskripsi |
+|-----|------|-----------|
+| Product Info | `heroicon-o-academic-cap` | Icon topi akademik untuk info produk |
+| Pricing & Stock | `heroicon-o-currency-dollar` | Icon dolar untuk harga & stok |
+| Media & Status | `heroicon-o-photo` | Icon foto untuk media & status |
+
+#### 5. Screenshot
+
+- [x] Tabs horizontal
+- [x] Tabs vertical
+- [x] Tab dengan badge
+
+![Tab dengan Badge Dinamis](screenshots/tabs-badge-dinamis.png)
+
+---
+
+## 📝 Kode Akhir ProductInfolist.php
+
+```php
+<?php
+
+namespace App\Filament\Resources\Products\Schemas;
+
+use Filament\Schemas\Components\Tabs;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Components\ImageEntry;
+use Filament\Infolists\Components\IconEntry;
+use Filament\Schemas\Schema;
+
+class ProductInfolist
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->components([
+                Tabs::make('Product Tabs')
+                    ->vertical()
+                    ->tabs([
+                        Tabs\Tab::make('Product Info')
+                            ->icon('heroicon-o-academic-cap')
+                            ->schema([
+                                TextEntry::make('name')
+                                    ->label('Product Name')
+                                    ->weight('bold')
+                                    ->color('primary'),
+                                TextEntry::make('sku')
+                                    ->label('SKU')
+                                    ->badge()
+                                    ->color('success'),
+                                TextEntry::make('description')
+                                    ->label('Description'),
+                            ])
+                            ->columnSpanFull(),
+
+                        Tabs\Tab::make('Pricing & Stock')
+                            ->icon('heroicon-o-currency-dollar')
+                            ->badge(fn ($record) => $record?->stock ?? 0)
+                            ->badgeColor(fn ($record) =>
+                                match(true) {
+                                    ($record?->stock ?? 0) >= 10 => 'success',
+                                    ($record?->stock ?? 0) >= 5 => 'warning',
+                                    default => 'danger',
+                                }
+                            )
+                            ->schema([
+                                TextEntry::make('price')
+                                    ->label('Price')
+                                    ->icon('heroicon-o-currency-dollar'),
+                                TextEntry::make('stock')
+                                    ->label('Stock'),
+                            ]),
+
+                        Tabs\Tab::make('Media & Status')
+                            ->icon('heroicon-o-photo')
+                            ->schema([
+                                ImageEntry::make('image')
+                                    ->label('Product Image')
+                                    ->disk('public'),
+                                IconEntry::make('is_active')
+                                    ->label('Active')
+                                    ->boolean(),
+                                IconEntry::make('is_featured')
+                                    ->label('Featured')
+                                    ->boolean(),
+                            ]),
+                    ]),
+            ]);
+    }
+}
+```
+
+---
 
 
 
+## ✅ Checklist Completion - Pertemuan 9
+
+- [x] Mengganti Section menjadi Tabs
+- [x] Membuat 3 Tab berbeda (Product Info, Pricing & Stock, Media & Status)
+- [x] Menambahkan icon pada Tab
+- [x] Menambahkan badge
+- [x] Mengubah orientasi ke vertical
+- [x] Latihan: Badge dinamis berdasarkan stok
+- [x] Latihan: Warna badge berbeda (success/warning/danger)
+- [x] Latihan: Icon berbeda pada tiap tab
+- [x] Screenshot: Tabs horizontal
+- [x] Screenshot: Tabs vertical
+- [x] Screenshot: Tab dengan badge
+- [x] Jawaban analisis (Bagian K)
+
+---
+
+## 📂 File References - Pertemuan 9
+
+| Jenis | Path |
+|--------|------|
+| Info List Schema | `app/Filament/Resources/Products/Schemas/ProductInfolist.php` |
+| Product Resource | `app/Filament/Resources/Products/ProductResource.php` |
+| View Page | `app/Filament/Resources/Products/Pages/ViewProduct.php` |
+| Product Model | `app/Models/Product.php` |
+
+---
+
+## 🎓 Kesimpulan (Bagian L)
+
+Pada pertemuan ini mahasiswa telah mempelajari:
+
+- Penggunaan Tabs pada Info List sebagai pengganti Section
+- Mengatur tampilan View Page menjadi lebih interaktif dengan navigasi tab
+- Menambahkan icon & badge pada tab untuk UX yang lebih baik
+- Mengubah orientasi tampilan dari horizontal ke vertical
+- Implementasi badge dinamis yang berubah sesuai data record
+- Implementasi badgeColor dinamis dengan match expression
+
+---
 
 ## Security Vulnerabilities
 
