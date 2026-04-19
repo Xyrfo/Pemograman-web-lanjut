@@ -1,15 +1,17 @@
 
-Laporan Praktikum Pemrograman Web Lanjut
-Identitas Mahasiswa
-Keterangan	Data
-Nama	Rifo Anggi Barbara Danuarta
-NIM	244107020063
-Kelas	TI-2F
+# Laporan Praktikum Pemrograman Web Lanjut
 
-Praktikum 6 - Implementasi Form Elements & Resource Post di Filament
+## Identitas Mahasiswa
+| Keterangan | Data |
+|------------|------|
+| **Nama**   | Rifo Anggi Barbara Danuarta |
+| **NIM**    | 244107020063 |
+| **Kelas**  | TI-2F |
+
+# Praktikum 6 - Implementasi Form Elements & Resource Post di Filament
 
 
-A. Membuat Resource Post
+ # A. Membuat Resource Post
 Buka terminal dan jalankan perintah untuk membuat resource Post:
 
 Bash
@@ -25,7 +27,7 @@ File resource baru akan otomatis terbuat di dalam folder app/Filament/Admin/Reso
 +1
 
 
-B. Implementasi Form Elements
+# B. Implementasi Form Elements
 Buka file PostForm.php yang berada di direktori app/Filament/Admin/Resources/Posts/Schemas/PostForm.php dan tambahkan komponen form berikut:
 +2
 
@@ -99,7 +101,7 @@ DatePicker::make('published_at'),
 <img width="926" height="414" alt="Screenshot 2026-04-06 194442" src="https://github.com/user-attachments/assets/6006e89c-173b-495a-8e14-bcf184d78b7d" />
 
 
-C. Menampilkan Data di Tabel
+# C. Menampilkan Data di Tabel
 Untuk memunculkan data yang sudah diinput pada tabel halaman index, buka file PostsTable.php dan tambahkan kolom berikut:
 
 PHP
@@ -111,7 +113,7 @@ ImageColumn::make('image')
     ->disk('public'),
 
 
-D. Konfigurasi Tambahan & Pengujian
+# D. Konfigurasi Tambahan & Pengujian
 Agar gambar bisa muncul dengan baik, jalankan perintah berikut untuk membuat symbolic link:
 
 Bash
@@ -129,7 +131,7 @@ Lakukan pengujian dengan membuat minimal 1 Post, pilih kategori, upload gambar, 
 <img width="984" height="596" alt="Screenshot 2026-04-06 200734" src="https://github.com/user-attachments/assets/2312e065-d2b0-48a4-9b7d-bb3b02ad579e" />
 
 
-Analisis & Diskusi
+# Analisis & Diskusi
 1. Mengapa kita perlu storage:link? 
 
 Secara default, Laravel menyimpan file hasil upload ke dalam direktori storage/app/public. Namun, direktori storage ini tidak dapat diakses langsung oleh publik (browser) demi alasan keamanan. Perintah php artisan storage:link berfungsi untuk membuat symbolic link (semacam shortcut) dari folder public/storage yang mengarah ke storage/app/public. Dengan begitu, file gambar yang diupload dapat diakses dan ditampilkan di halaman web.
@@ -148,8 +150,8 @@ RichEditor: Menyediakan antarmuka WYSIWYG (What You See Is What You Get). Penggu
 
 MarkdownEditor: Menyediakan antarmuka berbasis teks di mana pengguna menggunakan sintaks Markdown (seperti **tebal**, # Heading) untuk memformat dokumen. Editor ini lebih ringan dan lebih disukai oleh kalangan developer. Output yang disimpan di database adalah teks Markdown murni, yang nantinya perlu di-parse (dikonversi) menjadi HTML saat ditampilkan ke publik.
 
-Praktikum 6 - Custom Layout Form dengan Section & Group di Filament
-A. Mengatur Layout Dasar dengan Columns
+# Praktikum 6 - Custom Layout Form dengan Section & Group di Filament
+# A. Mengatur Layout Dasar dengan Columns
 Secara default, field pada Filament tersusun vertikal. Untuk membuat tampilan lebih efisien, kita dapat menggunakan fungsi columns().
 
 Buka file PostForm.php.
@@ -164,7 +166,7 @@ return $schema
 <img width="1319" height="650" alt="Screenshot 2026-04-08 073251" src="https://github.com/user-attachments/assets/cd1b040a-d89e-4af5-ae75-c2b39b2007ae" />
 
 
-B. Menggunakan Section untuk Pengelompokan
+# B. Menggunakan Section untuk Pengelompokan
 Section digunakan untuk membungkus beberapa field ke dalam satu kotak (card) agar terlihat lebih terorganisir.
 
 Gunakan Section::make() untuk mengelompokkan field utama.
@@ -180,7 +182,7 @@ Section::make('Main Content')
         TextInput::make('slug')->required(),
         MarkdownEditor::make('content')->columnSpanFull(),
     ])->columns(2),
-C. Mengatur Proporsi dengan ColumnSpan
+# C. Mengatur Proporsi dengan ColumnSpan
 Agar layout lebih profesional, kita bisa mengatur lebar tiap field menggunakan columnSpan().
 
 Gunakan columnSpan(1) atau columnSpan(2) untuk menentukan lebar relatif field di dalam grid.
@@ -190,7 +192,7 @@ Gunakan columnSpanFull() agar field (seperti Editor) mengambil seluruh lebar bar
 PHP
 TextInput::make('title')->columnSpan(2),
 ColorPicker::make('color')->columnSpan(1),
-D. Menggunakan Group untuk Layout Kompleks
+# D. Menggunakan Group untuk Layout Kompleks
 Group digunakan untuk mengatur tata letak tanpa memberikan tampilan visual (seperti garis atau kotak) tambahan. Ini berguna untuk menumpuk field secara vertikal di dalam kolom tertentu.
 
 PHP
@@ -208,7 +210,7 @@ Group::make()->schema([
 <img width="1326" height="666" alt="Screenshot 2026-04-08 080413" src="https://github.com/user-attachments/assets/5804391c-4077-4598-b783-391857204d9c" />
 
 
-Analisis & Diskusi
+# Analisis & Diskusi
 1. Mengapa layout form penting dalam aplikasi admin?
 Layout yang baik meningkatkan pengalaman pengguna (UX). Dalam panel admin dengan banyak field, layout yang teratur membantu admin menemukan field yang dicari dengan cepat, mengurangi kesalahan input, dan membuat tampilan aplikasi terlihat lebih profesional serta tidak mengintimidasi.
 
@@ -224,11 +226,11 @@ Kita menggunakan columnSpanFull() pada komponen yang membutuhkan ruang luas untu
 4. Apa keuntungan sistem grid 12 kolom?
 Sistem grid 12 kolom (yang juga diadaptasi Filament dari Tailwind CSS) memberikan fleksibilitas tinggi dalam pembagian layar. Karena angka 12 habis dibagi 2, 3, 4, dan 6, kita bisa dengan mudah mengatur proporsi lebar field (misal: 2/3 untuk konten utama dan 1/3 untuk sidebar) dengan sangat presisi.
 
-Praktikum 6 - Implementasi Form Validation pada Filament
-A. Konsep Dasar Validasi di Filament
+# Praktikum 6 - Implementasi Form Validation pada Filament
+# A. Konsep Dasar Validasi di Filament
 Filament terintegrasi langsung dengan sistem validasi Laravel. Hal ini memungkinkan kita untuk menerapkan aturan validasi (rules) langsung pada komponen form di dalam file Resource. Validasi berfungsi untuk memastikan data yang masuk ke database sesuai dengan format dan ketentuan yang diinginkan.
 
-B. Menerapkan Validasi Dasar (Required & Length)
+# B. Menerapkan Validasi Dasar (Required & Length)
 Langkah awal adalah memastikan field penting tidak dikosongkan oleh user dan memiliki panjang karakter yang sesuai.
 
 Buka file PostForm.php.
@@ -247,7 +249,9 @@ TextInput::make('slug')
     ->required()
     ->minLength(3)
     ->unique(ignoreRecord: true),
-C. Validasi Unique (Unik)
+
+    
+# C. Validasi Unique (Unik)
 Validasi ini sangat penting untuk field seperti slug agar tidak ada URL yang sama di database.
 
 Gunakan method unique().
@@ -257,7 +261,9 @@ Tambahkan parameter ignoreRecord: true agar saat kita melakukan Edit data, siste
 PHP
 TextInput::make('slug')
     ->unique(Table: Post::class, column: 'slug', ignoreRecord: true),
-D. Validasi File Upload & Relasi
+
+    
+# D. Validasi File Upload & Relasi
 Kita juga bisa memastikan bahwa user harus memilih kategori dan mengunggah gambar sebelum menyimpan data.
 
 Pada field Select (Category), tambahkan required().
@@ -272,7 +278,9 @@ Select::make('category_id')
 FileUpload::make('image')
     ->image()
     ->required(),
-E. Custom Error Message
+
+    
+# E. Custom Error Message
 Jika ingin menampilkan pesan kesalahan dalam bahasa Indonesia atau kalimat tertentu, kita bisa menggunakan method validationMessages().
 
 PHP
@@ -282,7 +290,9 @@ TextInput::make('title')
         'required' => 'Judul postingan tidak boleh dikosongkan.',
         'min' => 'Judul minimal harus berisi 5 karakter.',
     ]),
-Analisis & Diskusi
+
+    
+# Analisis & Diskusi
 1. Mengapa validasi penting pada admin panel?
 Validasi adalah baris pertahanan pertama untuk menjaga integritas data. Tanpa validasi, user bisa memasukkan data yang rusak, kosong, atau duplikat yang dapat menyebabkan error pada aplikasi (misalnya error 404 pada slug yang sama atau error null pada field yang wajib ada).
 
