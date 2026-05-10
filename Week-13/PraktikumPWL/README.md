@@ -238,11 +238,21 @@ BulkAction::make('activate')
 
 ## 📸 Screenshot Evidence
 
-- ![ActionGroup Dropdown](screenshots/action-group.png)
-- ![Clone Confirmation Modal](screenshots/clone-modal.png)
-- ![Delete Confirmation Modal](screenshots/delete-modal.png)
-- ![Bulk Actions](screenshots/bulk-actions.png)
-- ![Success Notification](screenshots/notification.png)
+- ![ActionGroup Dropdown]
+<img width="1320" height="539" alt="image" src="https://github.com/user-attachments/assets/7ae64aee-31d3-4079-8995-43faa18708ac" />
+
+- ![Clone Confirmation Modal]
+<img width="1324" height="554" alt="image" src="https://github.com/user-attachments/assets/ff5781c4-b34b-4fd0-b973-8f159a485f68" />
+
+- ![Delete Confirmation Modal]
+<img width="1324" height="639" alt="image" src="https://github.com/user-attachments/assets/2fe4907a-053d-4b65-9458-f7f6b016af08" />
+
+- ![Bulk Actions]
+<img width="1339" height="582" alt="image" src="https://github.com/user-attachments/assets/620b0df4-e800-4bad-b717-4eeb0a401729" />
+
+- ![Success Notification]
+<img width="1344" height="628" alt="image" src="https://github.com/user-attachments/assets/5e7ee5cc-f8fb-4cd4-b698-ced19144f8ad" />
+
 
 ---
 
