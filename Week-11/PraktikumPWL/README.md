@@ -128,9 +128,15 @@ Hasil:
 
 ## 📸 Screenshot Evidence
 
-- ![Search Title](screenshots/search-title.png)
-- ![Filter Tanggal](screenshots/filter-tanggal.png)
-- ![Filter Kategori](screenshots/filter-kategori.png)
+- ![Search Title]
+<img width="1339" height="482" alt="image" src="https://github.com/user-attachments/assets/6576188d-49a9-4f31-b160-6fa651c8fa12" />
+
+- ![Filter Tanggal]
+<img width="1346" height="535" alt="image" src="https://github.com/user-attachments/assets/b10b284a-8e35-4033-b269-3a8148c29a86" />
+
+- ![Filter Kategori]
+<img width="1339" height="531" alt="image" src="https://github.com/user-attachments/assets/b1c1fec2-5bd9-4653-8be3-f19db8be0521" />
+
 
 ---
 
