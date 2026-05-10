@@ -95,9 +95,15 @@ return $table
 
 ## 📸 Screenshot Evidence
 
-- ![Sorting Title Asc](screenshots/sorting-title-asc.png)
-- ![Sorting Title Desc](screenshots/sorting-title-desc.png)
-- ![Sorting Date Desc](screenshots/sorting-date-desc.png)
+- ![Sorting Title Asc]
+<img width="1344" height="562" alt="image" src="https://github.com/user-attachments/assets/ad864ddb-de70-4cf8-a859-b032fb7204b3" />
+
+- ![Sorting Title Desc]
+<img width="1331" height="557" alt="image" src="https://github.com/user-attachments/assets/10c6b328-1f31-4143-9b24-e14f5f3eb360" />
+
+- ![Sorting Date Desc]
+<img width="1344" height="560" alt="image" src="https://github.com/user-attachments/assets/63cce9f0-3a08-4b7d-b47a-603fa6258fcb" />
+
 
 ---
 
