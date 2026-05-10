@@ -152,10 +152,18 @@ Hasil:
 
 ## 📸 Screenshot Evidence
 
-- ![Toggle Published](screenshots/toggle-published.png)
-- ![Column Picker Post](screenshots/column-picker-post.png)
-- ![Toggle Product](screenshots/toggle-product.png)
-- ![Column Picker Product](screenshots/column-picker-product.png)
+- ![Toggle Published]
+<img width="1337" height="560" alt="image" src="https://github.com/user-attachments/assets/e2527f5b-a281-459a-9381-3f579d1c76c1" />
+
+- ![Column Picker Post]
+<img width="1342" height="663" alt="image" src="https://github.com/user-attachments/assets/055fd012-3f78-487c-9b24-2aa94f88c02d" />
+
+- ![Toggle Product]
+<img width="1320" height="655" alt="image" src="https://github.com/user-attachments/assets/b062acd2-28e8-4235-84e3-ce819621881f" />
+
+- ![Column Picker Product]
+<img width="1318" height="639" alt="image" src="https://github.com/user-attachments/assets/b7cd6f06-19b2-4564-ae13-0a3df8250455" />
+
 
 ---
 
